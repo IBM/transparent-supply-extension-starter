@@ -1,0 +1,6 @@
+<h1>Authentication required</h1>
+<p>Paste your JWT here:</p>
+<textarea #jwt></textarea>
+<button *ngIf="!prod" ibmButton="primary" (click)="login()">
+    Sign in
+</button>

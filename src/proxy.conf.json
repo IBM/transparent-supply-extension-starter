@@ -1,0 +1,11 @@
+{
+  "/ift/api": {
+    "target": "https://developer.transparentsupply.ibm.com/ift/api",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/ift/api": ""
+    },
+    "logLevel": "debug"
+  }
+}

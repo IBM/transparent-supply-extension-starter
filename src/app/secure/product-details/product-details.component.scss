@@ -1,0 +1,28 @@
+@import "carbon-components/scss/globals/scss/spacing";
+@import '@carbon/type/scss/styles';
+
+.product-details {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 24rem; // Arbitrarily chosen; looks pretty good
+  dt {
+    @include carbon--type-style('productive-heading-01');
+    flex: auto;
+    width: 50%;
+  }
+  dd {
+    @include carbon--type-style('body-short-01');
+    flex: auto;
+    width: 50%;
+  }
+}
+
+.item {
+  margin: $spacing-05;
+}
+
+.tile-sheet {
+  display: flex;
+  flex-wrap: wrap;
+}
