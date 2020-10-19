@@ -1,0 +1,64 @@
+<ibm-breadcrumb [noTrailingSlash]="true">
+  <ibm-breadcrumb-item [route]="['']">
+    Home
+  </ibm-breadcrumb-item>
+  <ibm-breadcrumb-item [current]="true">
+    Products
+  </ibm-breadcrumb-item>
+</ibm-breadcrumb>
+
+<h2>Products with recent activity
+  <span
+    [ibmTooltip]="template"
+    trigger="click"
+    [placement]="'bottom'"
+  >
+    <div
+      role="button"
+      class="bx--tooltip__trigger"
+    >
+      <svg
+        icon
+        ibmIconInformationFilled
+        size="20"
+        class="bx--btn__icon"
+      ></svg>
+    </div>
+  </span>
+</h2>
+<ng-template
+  #template
+  let-tooltip="tooltip"
+>
+  <p>
+    This view shows products with activity that occurred in the past month and that is visible to your organization.
+  </p>
+</ng-template>
+
+<ng-container *ngIf="(loadingState$ | async)?.isLoading; else elseBlock">
+  <ibm-loading></ibm-loading>
+</ng-container>
+
+<ng-template #elseBlock>
+  <ibm-structured-list>
+      <ibm-list-header>
+          <ibm-list-column>Name</ibm-list-column>
+          <ibm-list-column>Organization</ibm-list-column>
+          <ibm-list-column>Details</ibm-list-column>
+      </ibm-list-header>
+      <ibm-list-row *ngFor="let i of products$ | async">
+          <ibm-list-column>{{i.description || i.id}}</ibm-list-column>
+          <ibm-list-column>
+              {{i?.organization?.name || i.org_id}}
+          </ibm-list-column>
+          <ibm-list-column>
+              <a [routerLink]="['/products', i.id]">
+                  View
+              </a>
+          </ibm-list-column>
+      </ibm-list-row>
+      <div class="no-results" *ngIf="(products$ | async)?.length === 0">
+        You have no products with recent activity. Try ingesting some data!
+      </div>
+  </ibm-structured-list>
+</ng-template>

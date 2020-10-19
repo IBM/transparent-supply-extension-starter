@@ -1,0 +1,36 @@
+<ibm-breadcrumb [noTrailingSlash]="true">
+  <ibm-breadcrumb-item [route]="['']">
+    Home
+  </ibm-breadcrumb-item>
+  <ibm-breadcrumb-item [route]="['products']">
+    Products
+  </ibm-breadcrumb-item>
+  <ibm-breadcrumb-item [current]="true">
+    {{ (product$ | async)?.description || "Unknown Product" }}
+  </ibm-breadcrumb-item>
+</ibm-breadcrumb>
+
+<ng-container *ngIf="product$ | async; let product">
+  <dl class="product-details">
+    <dt class="bx--productive-heading-01">Product:</dt>
+    <dd>{{ product?.description }}</dd>
+    <dt>Owning organization:</dt>
+    <dd>{{ product?.organization?.name }}</dd>
+    <dt>SKU:</dt>
+    <dd>{{ product?.object_sku }}</dd>
+    <dt>ID:</dt>
+    <dd>{{ product?.id }}</dd>
+  </dl>
+  <h3>Recent EPCs for this product</h3>
+  <div class="tile-sheet">
+    <ng-container *ngFor="let epc of epcs$ | async">
+      <ibm-clickable-tile
+        class="item"
+        [href]="getTraceUrl(epc, product?.id)"
+        (click)="onEpcClick($event, epc, product?.id)"
+      >
+        {{ epc }}
+      </ibm-clickable-tile>
+    </ng-container>
+  </div>
+</ng-container>

@@ -1,0 +1,48 @@
+<ibm-breadcrumb [noTrailingSlash]="true">
+  <ibm-breadcrumb-item [current]="true">
+    Home
+  </ibm-breadcrumb-item>
+</ibm-breadcrumb>
+
+<section>
+    <div class="expressive-heading-05 spacing-03-bottom">
+        Welcome to the ui-extension-starter for <strong>IBM Blockchain</strong> Transparent Supply!
+    </div>
+</section>
+<section class="layout-04-top">
+  <p>
+    This application is an example of how to integrate into the Blockchain Transparent Supply user
+    interface. Use this to learn:
+  </p>
+  <ul class="list">
+    <li>How to subscribe to the user's token (See <code>auth.service.ts</code>)</li>
+    <li>
+      How to use the token to call Blockchain Transparent Supply APIs
+      (See <code>data.service.ts</code>)
+    </li>
+    <li>
+      How to communicate routing so that the URL in the browser changes as users navigate through
+      your application (See <code>frame-location-strategy.ts</code>)
+    </li>
+    <li>How to navigate to other UI modules (See <code>product-details.component.ts</code>)</li>
+  </ul>
+  <p>
+    The extension communicates with the parent UI through the use of <code>postMessage</code>.
+    Open your browser's developer console to see the messages going back and forth.
+  </p>
+</section>
+<section class="layout-04-top">
+  <p>
+    <a [routerLink]="['/products']">View products</a> to continue the demo.
+  </p>
+</section>
+<section class="layout-04-top layout-03-bottom">
+    <p
+      class="spacing-03-bottom"
+      *ngIf="(currentOrganization$ | async)?.name as name; else elseBlock"
+    >
+        You are authenticated in the extension as a member of: {{ name }}.
+    </p>
+    <ng-template #elseBlock><p>Loading your details...</p></ng-template>
+</section>
+
