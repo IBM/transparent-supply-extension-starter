@@ -33,7 +33,10 @@ export class RoutingStrategyService {
         // initialize routing strategies
         this.hashLocationStrategy = new HashLocationStrategy(platformLocation);
         this.pathLocationStrategy = new PathLocationStrategy(platformLocation);
-        this.frameLocationStrategy = new FrameLocationStrategy(frameMessagingService);
+        this.frameLocationStrategy = new FrameLocationStrategy(
+          frameMessagingService,
+          platformLocation,
+        );
 
         // It will be, because we configured it that way in app module
         this.proxyLocationStrategy = (locationStrategy as ProxyLocationStrategy);

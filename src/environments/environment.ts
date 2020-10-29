@@ -15,9 +15,9 @@
 
 export const environment = {
   production: false,
-  identityUrl: 'ift/api/identity-proxy/onboarding/v1/',
-  productsUrl: 'ift/api/outbound/v2/products',
-  eventsUrl: 'ift/api/outbound/v2/events',
-  lotsAndSerialsUrl: 'ift/api/outbound/v2/lots_and_serials',
-  organizationsUrl: 'ift/api/organizations/v1/organizations',
+  identityUrl: ' /ift/api/identity-proxy/onboarding/v1/',
+  productsUrl: '/ift/api/outbound/v2/products',
+  eventsUrl: '/ift/api/outbound/v2/events',
+  lotsAndSerialsUrl: '/ift/api/outbound/v2/lots_and_serials',
+  organizationsUrl: '/ift/api/organizations/v1/organizations',
 };

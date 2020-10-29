@@ -20,7 +20,6 @@
             "assets": [
               "src/assets",
               "src/sw.js",
-              "src/manifest.json",
               "src/favicon.ico"
             ],
             "styles": [
@@ -92,7 +91,6 @@
             "assets": [
               "src/assets",
               "src/sw.js",
-              "src/manifest.json",
               "src/favicon.ico"
             ],
             "stylePreprocessorOptions": {

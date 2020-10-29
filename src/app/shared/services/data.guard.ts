@@ -49,7 +49,7 @@ export class DataGuard implements CanActivate {
           this.store.dispatch(loadRecentProducts());
         }
         return true;
-      })
+      }),
     );
   }
 }

@@ -23,7 +23,7 @@ export class OrganizationsEffects {
       switchMap(() =>
         this.data.getOrganizations().pipe(
           map((response) => loadOrganizationsSuccess({ data: response })),
-          catchError((error) => of(loadOrganizationsFail(error))),
+          catchError((error) => of(loadOrganizationsFail({ error: error.message }))),
         ),
       ),
     ),
