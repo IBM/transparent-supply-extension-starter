@@ -12,6 +12,7 @@ import {
   LocationStrategy,
   LocationChangeListener,
   APP_BASE_HREF,
+  PlatformLocation,
 } from '@angular/common';
 import { Injectable, Optional, Inject } from '@angular/core';
 import { FrameMessagingService } from './frame-messaging.service';
@@ -30,9 +31,13 @@ export class FrameLocationStrategy implements LocationStrategy {
 
   constructor(
     private messaging: FrameMessagingService,
+    private _platformLocation: PlatformLocation,
     @Optional() @Inject(APP_BASE_HREF) href?: string,
   ) {
     // Same logic as HashLocationStrategy; PathLocationStrategy does more...?
+    if (href == null) {
+      href = this._platformLocation.getBaseHrefFromDOM();
+    }
     this.baseHref = href || '';
     // Initial app route, if provided to the iframe
     // Uses same logic as PathLocationStrategy

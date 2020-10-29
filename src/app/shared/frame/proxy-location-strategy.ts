@@ -12,6 +12,7 @@ import {
   LocationStrategy,
   LocationChangeListener,
   APP_BASE_HREF,
+  PlatformLocation,
 } from '@angular/common';
 import { Injectable, Optional, Inject } from '@angular/core';
 
@@ -32,8 +33,14 @@ export class ProxyLocationStrategy implements LocationStrategy {
   private previousStrategiesMap = new Map<LocationStrategy, boolean>();
 
   constructor(
+    private _platformLocation: PlatformLocation,
     @Optional() @Inject(APP_BASE_HREF) href?: string,
   ) {
+    // Use the same logic as the PathLocationStrategy. We need this before our innerStrategy has
+    // been initialized unfortunately, for the first routing call
+    if (href == null) {
+      href = this._platformLocation.getBaseHrefFromDOM();
+    }
     this.baseHref = href || '';
   }
 

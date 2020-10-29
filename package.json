@@ -1,11 +1,11 @@
 {
   "name": "bts-extension-starter-app",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "Apache-2.0",
   "scripts": {
     "ng": "ng",
     "start": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --ssl true --port=5000",
-    "build": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --prod --aot --stats-json",
+    "build": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --prod --aot",
     "test": "ng test",
     "test:once": "ng test --watch=false",
     "lint": "ng lint",
