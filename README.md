@@ -36,6 +36,11 @@ npm start
 
 ```
 
+### Pointing to the correct instance
+By default, this app proxies to https://developer.transparentsupply.ibm.com. If this is not the IBM 
+Blockchain Transparent Supply instance you want to use, change the target in 
+[`proxy.conf.json`](src/proxy.conf.json).
+
 When started, the extension will detect if it is running inside an iframe to determine which [Routing Strategy](#Routing-Strategy) to use.
 If not in a frame, the extension will prompt you to enter your authorization token (JWT). You can acquire a token by logging in [here](https://developer.transparentsupply.ibm.com/ift/api/identity-proxy/login).
 
@@ -60,6 +65,17 @@ When your extension is deployed and you are ready to integrate, contact IBM Bloc
 properly configured. Note that you should be sure to protect your extension against XSS vulnerabilities, and that you will be required to sign a Statement of Understanding of Risk.
 
 There are no self-service deployment options at this time.
+
+### Proxying
+By default, this app makes requests to the relative path `/ift/api/*`. Therefore, when deployed, it 
+is expected that your server will proxy requests made to `/ift/api/*` to the appropriate IBM 
+Blockchain Transparent Supply instance. [Nginx](https://nginx.org/) is a very popular web server 
+that can be configured to do this.
+
+Some IBM Blockchain Transparent Supply APIs allow for CORS requests, which would let your app run 
+serverless. However, your origin must be added to an allowlist. Open a ticket with support if this
+option is right for you.
+
 
 -------------------------------------------
 
