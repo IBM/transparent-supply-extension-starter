@@ -1,6 +1,6 @@
 /**
  *********************************************************************
- * © Copyright IBM Corp. 2020
+ * © Copyright IBM Corp. 2020, 2021
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ export class FrameMessagingService {
   outerOrigin = '*';
   subscriptions$: Subject<ProtocolMessage> = new Subject<ProtocolMessage>();
   userToken$: Subject<{ token: string }> = new Subject<{ token: string }>();
+  theme$: Subject<{ [token: string]: string }> = new Subject();
 
   private didInit = false;
 
@@ -124,6 +125,11 @@ export class FrameMessagingService {
     return this.userToken$.asObservable().pipe(skipWhile(token => !token));
   }
 
+  requestTheme() {
+    this.sendGetMessage('config/theme');
+    return this.theme$.asObservable().pipe(skipWhile(theme => !theme));
+  }
+
   private sendMessage(message: ProtocolMessage) {
     console.log('FRAME: Sending message...', message);
     this.windowService.window.parent.postMessage(message, this.outerOrigin);
@@ -141,6 +147,9 @@ export class FrameMessagingService {
     } else if (message.type === MessageRequestTypes.GET_DATA && message.path === 'user/token') {
       console.log('FRAME: GET token message received', message);
       this.userToken$.next(message.body);
+    } else if (message.type === MessageRequestTypes.GET_DATA && message.path === 'config/theme') {
+      console.log('FRAME: GET theme message received', message);
+      this.theme$.next(message.body);
     }
   }
 }

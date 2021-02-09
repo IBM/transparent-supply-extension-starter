@@ -1,6 +1,6 @@
 /**
  *********************************************************************
- * © Copyright IBM Corp. 2020
+ * © Copyright IBM Corp. 2020, 2021
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@ import { AuthGuard } from './shared/services/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { DataGuard } from './shared/services/data.guard';
+import { ThemeGuard } from './shared/services/theme.guard';
 
 
 const routes: Routes = [
@@ -24,7 +25,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        canActivate: [AuthGuard, DataGuard],
+        canActivate: [AuthGuard, DataGuard, ThemeGuard],
         loadChildren: () => import('./secure/secure.module').then(m => m.SecureModule)
       },
       {

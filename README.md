@@ -49,6 +49,10 @@ If not in a frame, the extension will prompt you to enter your authorization tok
 To develop and test inside the context of the parent application, you can load your extension [here](https://developer.transparentsupply.ibm.com/ex/frame-test).
 This special route will attempt to load an extension at `https://localhost:5000` with all permissions.
 
+If you get an error message in your browser, such as `The webpage at https://localhost:5000/ might be temporarily down`, you likely have to 
+accept the self-signed certificate that the Angular development tool generates. Navigate to https://localhost:5000/ directly and your browser
+should prompt you to do so.
+
 ## Routing Strategy
 
 When loaded inside a frame, the application swaps out Angular's [LocationStrategy Class](https://angular.io/api/common/LocationStrategy) with an 
