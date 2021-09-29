@@ -2,15 +2,14 @@
 	"compilerOptions": {
 		"sourceMap": true,
 		"declaration": false,
-		"moduleResolution": "node",
-		"emitDecoratorMetadata": true,
+    "moduleResolution": "node",
 		"experimentalDecorators": true,
 		"lib": [
 			"dom",
 			"es2016"
 		],
 		"outDir": "../out-tsc/spec",
-		"module": "esnext",
+		"module": "es2020",
 		"target": "es2015",
 		"baseUrl": "",
 		"types": [

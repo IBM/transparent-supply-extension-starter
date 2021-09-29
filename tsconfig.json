@@ -10,14 +10,13 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
     "lib": [
       "es2016",
       "dom"
     ],
-    "module": "esnext",
+    "module": "es2020",
     "baseUrl": "./"
   },
   "angularCompilerOptions": {
