@@ -5,9 +5,9 @@
 </ibm-breadcrumb>
 
 <section>
-    <div class="expressive-heading-05 spacing-03-bottom">
-        Welcome to the ui-extension-starter for <strong>IBM Blockchain</strong> Transparent Supply!
-    </div>
+  <div class="expressive-heading-05 spacing-03-bottom">
+    Welcome to the ui-extension-starter for IBM Blockchain Transparent Supply!
+  </div>
 </section>
 <section class="layout-04-top">
   <p>
@@ -33,16 +33,16 @@
 </section>
 <section class="layout-04-top">
   <p>
-    <a class="bx--link" [routerLink]="['/products']">View products</a> to continue the demo.
+    <a class="bx--link" routerLink="/products">View products</a> to continue the demo.
   </p>
 </section>
 <section class="layout-04-top layout-03-bottom">
-    <p
-      class="spacing-03-bottom"
-      *ngIf="(currentOrganization$ | async)?.name as name; else elseBlock"
-    >
-        You are authenticated in the extension as a member of: {{ name }}.
-    </p>
-    <ng-template #elseBlock><p>Loading your details...</p></ng-template>
+  <p
+    class="spacing-03-bottom"
+    *ngIf="(currentOrganization$ | async)?.name as name; else elseBlock"
+  >
+    You are authenticated in the extension as a member of: {{ name }}.
+  </p>
+  <ng-template #elseBlock><p>Loading your details...</p></ng-template>
 </section>
 
